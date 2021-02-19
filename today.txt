@@ -1,0 +1,133 @@
+//MCU specific header file
+#include<stdint.h>
+
+//Defining memory base address
+#define SRAM1_BASEADDR 0x20000000U
+#define SRAM2_BASEADDR 0x2001C000U
+#define FLASH_BASEADDR 0x08000000U
+#define ROM_BASEADDR  0x1FFF0000U
+
+//defining peripheral base addresses
+
+#define APB1_BASEADDR 0x40000000U
+#define APB2_BASEADDR 0x40010000U
+#define AHB1_BASEADDR 0x40020000U
+
+//defining peripherals base address which are hanging on to AHB1 bus
+
+#define GPIOA_BASEADDR (AHB1_BASEADDR + 0x0000)
+#define GPIOB_BASEADDR (AHB1_BASEADDR + 0x0400)
+#define GPIOC_BASEADDR (AHB1_BASEADDR + 0x0800)
+#define GPIOD_BASEADDR (AHB1_BASEADDR + 0x0C00)
+#define GPIOE_BASEADDR (AHB1_BASEADDR + 0x1000)
+#define GPIOF_BASEADDR (AHB1_BASEADDR + 0x1400)
+#define GPIOG_BASEADDR (AHB1_BASEADDR + 0x1800)
+#define GPIOH_BASEADDR (AHB1_BASEADDR + 0x1C00)
+#define GPIOI_BASEADDR (AHB1_BASEADDR + 0x2000)
+#define GPIOJ_BASEADDR (AHB1_BASEADDR + 0x2400)
+#define GPIOK_BASEADDR (AHB1_BASEADDR + 0x2800)
+#define CRC_BASEADDR 0x4002 3000
+#define RCC_BASEADDR 0x4002 3800 //RCC base address
+#define FLASH_INT_REG_BASEADDR 0x4002 3C00
+#define BKPSRAM_REG 0x4002 4000
+#define DMA1 0x4002 6000
+#define DMA2 0x4002 6400
+#define ETHERNET_MAC 0x4002 8000
+#define DMA2D 0x4002 B000
+#define USB_OTG_HS 0x4004 0000
+
+//defining peripherals base address which are hanging on to APB1 bus
+
+#define TIM2 (APB1_BASEADDR + 0x0000)
+#define TIM3 (APB1_BASEADDR + 0x0400)
+#define TIM4 (APB1_BASEADDR + 0x0800)
+#define TIM5 (APB1_BASEADDR + 0x0C00)
+#define TIM6 (APB1_BASEADDR + 0x1000)
+#define TIM7 (APB1_BASEADDR + 0x1400)
+#define TIM12 (APB1_BASEADDR + 0x1800)
+#define TIM13 (APB1_BASEADDR + 0x1C00)
+#define TIM14 (APB1_BASEADDR + 0x2000)
+#define RTC_BKP_REG (APB1_BASEADDR + 0x2800)
+#define WWDG (APB1_BASEADDR + 0x2C00)
+#define IWDG (APB1_BASEADDR + 0x3000)
+#define I2S2ext (APB1_BASEADDR + 0x3400)
+#define I2S2 (APB1_BASEADDR + 0x3800)
+#define I2S3 (APB1_BASEADDR + 0x3C00)
+#define I2S3ext (APB1_BASEADDR + 0x4000)
+#define USART2 (APB1_BASEADDR + 0x4400)
+#define USART3 (APB1_BASEADDR + 0x4800)
+#define UART4 (APB1_BASEADDR + 0x4C00)
+#define UART5 (APB1_BASEADDR + 0x5000)
+#define I2C1 (APB1_BASEADDR + 0x5400)
+#define I2C2 (APB1_BASEADDR + 0x5800)
+#define I2C3 (APB1_BASEADDR + 0x5C00)
+#define CAN1 (APB1_BASEADDR + 0x6400)
+#define CAN2 (APB1_BASEADDR + 0x6800)
+#define PWR (APB1_BASEADDR + 0x7000)
+#define DAC (APB1_BASEADDR + 0x7400)
+#define UART7 (APB1_BASEADDR + 0x7800)
+#define UART8 (APB1_BASEADDR + 0x7C00)
+
+//defining peripherals base address which are hanging on to APB2 bus
+
+#define TIM1 (APB2_BASEADDR + 0x0000)
+#define TIM8 (APB2_BASEADDR + 0x0400)
+#define USART1 (APB2_BASEADDR + 0x1000)
+#define USART6 (APB2_BASEADDR + 0x1400)
+#define ADC1_ADC2_ADC3 (APB2_BASEADDR + 0x2000)
+#define SDIO (APB2_BASEADDR + 0x2C00)
+#define SPI1 (APB2_BASEADDR + 0x3000)
+#define SPI4 (APB2_BASEADDR + 0x3400)
+#define SYSCFG (APB2_BASEADDR + 0x3800)
+#define EXTI (APB2_BASEADDR + 0x3C00)
+#define TIM9 (APB2_BASEADDR + 0x4000)
+#define TIM10 (APB2_BASEADDR + 0x4400)
+#define TIM11 (APB2_BASEADDR + 0x4800)
+#define SPI5 (APB2_BASEADDR + 0x5000)
+#define SPI6 (APB2_BASEADDR + 0x5400)
+
+//Peripherals under RCC
+#define RCC_BASAEADDR (AHB1_BASEADDR + 0x3800UL)
+
+//peripheral clock enable
+
+#define GPIOA_PCLK_EN ()    (RCC->AHB1ENR |= (1<<0))
+#define GPIOB_PCLK_EN ()    (RCC->AHB1ENR |= (1<<1))
+#define GPIOC_PCLK_EN ()    (RCC->AHB1ENR |= (1<<2))
+#define GPIOD_PCLK_EN ()    (RCC->AHB1ENR |= (1<<3))
+#define GPIOE_PCLK_EN ()    (RCC->AHB1ENR |= (1<<4))
+
+//peripheral clock disable(to do)
+
+#define GPIOA_PCLK_DIS ()    (TODO)
+#define GPIOB_PCLK_DIS ()    (TODO)
+#define GPIOC_PCLK_DIS ()    (TODO)
+#define GPIOD_PCLK_DIS ()    (TODO)
+#define GPIOE_PCLK_DIS ()    (TODO)
+
+#define __vo volatile
+
+typedef struct
+{
+	__vo uint32_t MODER;
+	__vo uint32_t OTYPER;
+	__vo uint32_t OSPEEDR;
+	__vo uint32_t PUPDR;
+	__vo uint32_t IDR;
+	__vo uint32_t ODR;
+	__vo uint32_t BSRR;
+	__vo uint32_t LCKR;
+	__vo uint32_t AFR[2];
+}Gpio_RegDef_t;
+
+
+#define GPIOA ((Gpio_RegDef_t*)GPIOA_BASEADDR)
+#define GPIOB ((Gpio_RegDef_t*)GPIOB_BASEADDR)
+#define GPIOC ((Gpio_RegDef_t*)GPIOC_BASEADDR)
+#define GPIOD ((Gpio_RegDef_t*)GPIOD_BASEADDR)
+#define GPIOE ((Gpio_RegDef_t*)GPIOE_BASEADDR)
+
+#include "gpio_driver.h"
+
+
+
